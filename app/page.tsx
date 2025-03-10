@@ -5,8 +5,8 @@ const Banner = dynamic(() => import("./components/home/Banner"));
 const FlashSale = dynamic(() => import("./components/home/FlashSale"));
 const SlideBanner = dynamic(() => import("./components/home/SlideBanner"));
 const TopBrands = dynamic(() => import("./components/home/TopBrands"));
-const OnSellingProducts = dynamic(() => import("./components/home/OnSellingProducts"));
-const NewArrivals = dynamic(() => import("./components/home/NewArrivals"));
+// const OnSellingProducts = dynamic(() => import("./components/home/OnSellingProducts"));
+// const NewArrivals = dynamic(() => import("./components/home/NewArrivals"));
 
 export const metadata: Metadata = {
   title: "Perfoment NextJS",
@@ -17,16 +17,18 @@ export default async function Home() {
 
   const { items: productSale } = await fetch("https://dragonball-api.com/api/characters").then((res) => res.json());
   const bannerCats = await fetch("https://api.thecatapi.com/v1/images/search?limit=5").then((res) => res.json());
-  console.log(bannerCats);
+  const { akatsuki: slideBanner } = await fetch("https://dattebayo-api.onrender.com/akatsuki").then((res) => res.json());
+  const topBands = await fetch("https://api.thecatapi.com/v1/images/search?limit=16").then((res) => res.json());
+  // const { data: sellingsProduct } = await fetch("https://api.jikan.moe/v4/producers?limit=9").then((res) => res.json());
 
   return (
     <>
       <Banner items={bannerCats} />
       <FlashSale products={productSale} />
-      <SlideBanner />
-      <TopBrands />
-      <OnSellingProducts />
-      <NewArrivals />
+      <SlideBanner slideBanner={slideBanner} />
+      <TopBrands topBands={topBands} />
+      {/* <OnSellingProducts product={sellingsProduct} />
+      <NewArrivals /> */}
     </>
   );
 }

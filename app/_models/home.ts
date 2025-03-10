@@ -12,8 +12,25 @@ export interface ProductType {
 }
 
 export interface BannerItemType {
-  id: string
+  id: string;
+  url: string;
+  width: number;
+  height: number;
+}
+
+export interface SlideBannerItemType {
+  id: number;
+  name: string;
+  images: string[];
+}
+
+export interface OnSellingProductsType {
+  mal_id: number
   url: string
-  width: number
-  height: number
+  titles: string
+  images: string
+  favorites: number
+  count: number
+  established: string
+  about: string
 }

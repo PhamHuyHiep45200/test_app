@@ -2,8 +2,15 @@
 import React from 'react'
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
+import { SlideBannerItemType } from '@/app/_models/home';
+import Image from 'next/image';
 
-function SlideBanner() {
+interface SlideBannerProps {
+  slideBanner: SlideBannerItemType[]
+}
+
+function SlideBanner(props: SlideBannerProps) {
+  const { slideBanner } = props
   return (
     <div>
       <Swiper
@@ -16,17 +23,14 @@ function SlideBanner() {
         spaceBetween={60}
         className="w-full h-[300px] md:h-[400px] mySwiper my-10"
       >
-        {[1, 2, 3, 4, 5, 6].map(e => <SwiperSlide key={e}>
-          {/* <Image
-          width={700}
-          height={400}
-          src="https://dragonball-api.com/characters/ginyu.webp"
-          alt="Slide 2"
-          className="w-full h-full object-cover"
-        /> */}
-          <div className='w-full h-[400px] bg-red-300'>
-
-          </div>
+        {slideBanner?.map(e => <SwiperSlide key={e.id}>
+          <Image
+            width={700}
+            height={400}
+            src={e?.images?.[0]}
+            alt="Slide 2"
+            className="w-full h-full object-cover rounded-lg"
+          />
         </SwiperSlide>)}
       </Swiper>
     </div>

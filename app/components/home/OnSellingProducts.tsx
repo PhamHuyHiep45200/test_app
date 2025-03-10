@@ -1,6 +1,13 @@
+import { OnSellingProductsType } from '@/app/_models/home'
+import Image from 'next/image'
 import React from 'react'
 
-function OnSellingProducts() {
+interface OnSellingProductsProps {
+  product: OnSellingProductsType[]
+}
+
+function OnSellingProducts(props: OnSellingProductsProps) {
+  const { product } = props
   return (
     <div className='container mx-auto'>
       <div className="mt-8">
@@ -12,9 +19,16 @@ function OnSellingProducts() {
             <p>Limited Time Valid</p>
           </div>
           <div className="col-span-3 grid grid-cols-3 gap-4">
-            {[...Array(9)].map((_, index) => (
-              <div key={index} className="bg-white p-4 shadow rounded-lg">
-                <div className="bg-gray-200 h-32 rounded-lg mb-2"></div>
+            {product?.map((prd, index) => (
+              <div key={prd.mal_id} className="bg-white p-4 shadow rounded-lg">
+                <div className="bg-gray-200 h-32 rounded-lg mb-2">
+                  <Image
+                    src={prd.url}
+                    alt={prd.url}
+                    width={200}
+                    height={200}
+                    className="w-full h-full object-cover rounded-lg" />
+                </div>
                 <p className="text-sm font-semibold">Product {index + 1}</p>
                 <p className="text-sm text-gray-500">$12.99</p>
               </div>
