@@ -1,5 +1,6 @@
 'use client'
 import { ProductType } from '@/app/_models/home'
+import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import React from 'react'
 
@@ -8,14 +9,15 @@ interface FlashSaleProps {
 }
 
 function FlashSale({ products }: FlashSaleProps) {
+  const t = useTranslations('product');
   return (
     <div className='container mx-auto'>
       <section className="p-6 mx-10 bg-white border border-gray-300 rounded-md">
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-2xl font-bold">Flash Sale</h2>
-          <span className="text-gray-500 text-sm">Time Over!</span>
+          <h2 className="text-2xl font-bold">{t('flashSale')}</h2>
+          <span className="text-gray-500 text-sm">{t('timeOver')}</span>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
           {products.map((product) => (
             <div key={product.id} className="border border-gray-50 rounded-md p-4 shadow-sm flex flex-col">
               <Image

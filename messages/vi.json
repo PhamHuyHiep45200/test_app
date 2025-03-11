@@ -1,0 +1,18 @@
+{
+  "header": {
+    "demos": "Trải nghiệm",
+    "men": "Thời trang đàn ông",
+    "women": "Thời trang phụ nữ",
+    "search": "Tìm kiếm",
+    "shop": "Cửa hàng",
+    "page": "Trang",
+    "signin": "Đăng nhập"
+  },
+  "product": {
+    "flashSale": "Giảm giá sốc",
+    "timeOver": "Hết giờ!",
+    "brand": "Thương hiệu hàng đầu",
+    "sellingProducts": "Sản phẩm đang bán",
+    "newArrivals": "Hàng mới về"
+  }
+}

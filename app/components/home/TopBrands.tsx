@@ -1,4 +1,5 @@
 import { BannerItemType } from "@/app/_models/home";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import React from "react";
 
@@ -8,11 +9,12 @@ interface TopBrandProps {
 
 const TopBrands = (props: TopBrandProps) => {
   const { topBands } = props;
+  const t = useTranslations('product');
 
   return (
     <div className="container mx-auto p-4 flex flex-col">
-      <h2 className="text-lg font-semibold mb-4">Top Brands</h2>
-      <div className="grid grid-cols-4 gap-4 md:grid-cols-4 lg:grid-cols-4 flex-grow">
+      <h2 className="text-lg font-semibold mb-4">{t('brand')}</h2>
+      <div className="grid grid-cols-3 gap-4 md:grid-cols-4 lg:grid-cols-4 flex-grow">
         {topBands?.map((brand, index) => (
           <div key={brand.id} className="w-full h-full aspect-square bg-gray-200 rounded-lg overflow-hidden">
             <Image

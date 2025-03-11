@@ -1,0 +1,18 @@
+{
+  "header": {
+    "demos": "Demos",
+    "men": "Men Wear",
+    "women": "Women Wear",
+    "search": "Search",
+    "shop": "Shops",
+    "page": "Pages",
+    "signin": "Sign In"
+  },
+  "product": {
+    "flashSale": "Flash Sale",
+    "timeOver": "Time Over!",
+    "brand": "Top Brands",
+    "sellingProducts": "On Selling Products",
+    "newArrivals": "New Arrivals"
+  }
+}

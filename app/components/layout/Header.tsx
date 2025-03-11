@@ -1,32 +1,35 @@
+import { useTranslations } from "next-intl";
 import React from "react";
+import SelectLocale from "./header/SelectLocale";
 
 function Header() {
+  const t = useTranslations('header');
   return (
     <header className="flex justify-between items-center p-4 bg-white shadow-md">
       <h1 className="text-2xl font-bold">CHAWK BAZAR</h1>
       <nav className="hidden md:flex gap-6">
         <a href="#" className="hover:text-gray-500">
-          Demos
+          {t('demos')}
         </a>
         <a href="#" className="hover:text-gray-500">
-          Men Wear
+          {t('men')}
         </a>
         <a href="#" className="hover:text-gray-500">
-          Women Wear
+          {t('women')}
         </a>
         <a href="#" className="hover:text-gray-500">
-          Search
+          {t('search')}
         </a>
         <a href="#" className="hover:text-gray-500">
-          Shops
+          {t('shop')}
         </a>
         <a href="#" className="hover:text-gray-500">
-          Pages
+          {t('page')}
         </a>
       </nav>
       <div className="flex gap-4 items-center">
-        <button className="border px-3 py-1 rounded">English - EN</button>
-        <button className="hover:text-gray-500">Sign In</button>
+        <SelectLocale />
+        <button className="hover:text-gray-500">{t('signin')}</button>
         <button className="relative">
           🛒{" "}
           <span className="absolute -top-2 -right-2 bg-red-500 text-white px-2 rounded-full text-sm">

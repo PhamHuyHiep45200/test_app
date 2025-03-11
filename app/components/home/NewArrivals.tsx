@@ -1,78 +1,34 @@
+import { ProductType } from "@/app/_models/home";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import React from "react";
 
-const newArrivals = [
-  {
-    image: "/images/product1.jpg",
-    name: "Roadster Women Round Neck",
-    price: "$18.59",
-  },
-  {
-    image: "/images/product2.jpg",
-    name: "Roadster Women Round Neck",
-    price: "$18.59",
-  },
-  {
-    image: "/images/product3.jpg",
-    name: "Roadster Women Round Neck",
-    price: "$18.59",
-  },
-  {
-    image: "/images/product4.jpg",
-    name: "Roadster Women Round Neck",
-    price: "$18.59",
-  },
-  {
-    image: "/images/product5.jpg",
-    name: "Roadster Women Round Neck",
-    price: "$18.59",
-  },
-  {
-    image: "/images/product6.jpg",
-    name: "Roadster Women Round Neck",
-    price: "$18.59",
-  },
-  {
-    image: "/images/product7.jpg",
-    name: "Roadster Women Round Neck",
-    price: "$18.59",
-  },
-  {
-    image: "/images/product8.jpg",
-    name: "Roadster Women Round Neck",
-    price: "$18.59",
-  },
-  {
-    image: "/images/product9.jpg",
-    name: "Roadster Women Round Neck",
-    price: "$18.59",
-  },
-  {
-    image: "/images/product10.jpg",
-    name: "Roadster Women Round Neck",
-    price: "$18.59",
-  },
-];
+interface NewArrivalsProps {
+  items: ProductType[];
+}
 
-function NewArrivals() {
+function NewArrivals(props: NewArrivalsProps) {
+  const { items } = props;
+  const t = useTranslations('product');
+
   return (
     <div className="container mx-auto">
-      <h2 className="text-lg font-semibold mt-8 mb-4">New Arrivals</h2>
-      <div className="grid grid-cols-5 gap-4">
-        {newArrivals.map((product, index) => (
-          <div key={index} className="bg-white rounded-lg shadow p-4">
+      <h2 className="text-lg font-semibold mt-8 mb-4">{t('newArrivals')}</h2>
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+        {!!items?.length && items.map((prd) => (
+          <div key={prd.id} className="bg-white rounded-lg shadow p-4">
             <Image
-              src={product.image}
+              src={prd.image}
               width={100}
               height={240}
-              alt={product.name}
+              alt={prd.name}
               className="w-full h-60 object-cover rounded"
             />
-            <h3 className="text-sm font-medium mt-2">{product.name}</h3>
-            <p className="text-gray-500 text-xs">
-              Fendi began life in 1925 as a fur and ...
+            <h3 className="text-sm font-medium mt-2">{prd.name}</h3>
+            <p className="text-gray-500 text-xs line-clamp-1">
+              {prd.description}
             </p>
-            <p className="text-lg font-semibold mt-1">{product.price}</p>
+            <p className="text-lg font-semibold mt-1">{prd.ki}</p>
           </div>
         ))}
       </div>

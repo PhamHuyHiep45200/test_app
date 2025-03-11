@@ -1,36 +1,39 @@
-import { OnSellingProductsType } from '@/app/_models/home'
+import { ProductType } from '@/app/_models/home'
+import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 import React from 'react'
 
 interface OnSellingProductsProps {
-  product: OnSellingProductsType[]
+  product: ProductType[]
 }
 
 function OnSellingProducts(props: OnSellingProductsProps) {
   const { product } = props
+  const t = useTranslations('product');
+
   return (
     <div className='container mx-auto'>
       <div className="mt-8">
-        <h2 className="text-lg font-semibold mb-4">On Selling Products</h2>
-        <div className="grid grid-cols-4 gap-4">
+        <h2 className="text-lg font-semibold mb-4">{t('sellingProducts')}</h2>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <div className="col-span-1 bg-yellow-500 p-6 text-white flex flex-col items-center justify-center rounded-lg">
             <p className="text-lg font-bold">SALE OFFER!</p>
             <p className="text-3xl font-bold">50%</p>
             <p>Limited Time Valid</p>
           </div>
-          <div className="col-span-3 grid grid-cols-3 gap-4">
-            {product?.map((prd, index) => (
-              <div key={prd.mal_id} className="bg-white p-4 shadow rounded-lg">
+          <div className="col-span-1 md:col-span-3 grid grid-cols-2 md:grid-cols-3 gap-4">
+            {!!product?.length && product?.map((prd) => (
+              <div key={prd.id} className="bg-white p-4 shadow rounded-lg">
                 <div className="bg-gray-200 h-32 rounded-lg mb-2">
                   <Image
-                    src={prd.url}
-                    alt={prd.url}
+                    src={prd?.image}
+                    alt={prd?.name}
                     width={200}
                     height={200}
                     className="w-full h-full object-cover rounded-lg" />
                 </div>
-                <p className="text-sm font-semibold">Product {index + 1}</p>
-                <p className="text-sm text-gray-500">$12.99</p>
+                <p className="text-sm font-semibold">{prd?.name}</p>
+                <p className="text-sm text-gray-500">{prd?.maxKi}</p>
               </div>
             ))}
           </div>

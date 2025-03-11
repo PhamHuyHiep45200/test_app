@@ -16,11 +16,11 @@ function SlideBanner(props: SlideBannerProps) {
       <Swiper
         modules={[Pagination, Autoplay]}
         pagination={{ clickable: true }}
-        // autoplay={{ delay: 3000 }}
+        autoplay={{ delay: 3000 }}
         slidesPerView={2}
         centeredSlides={true}
         loop={true}
-        spaceBetween={60}
+        spaceBetween={20}
         className="w-full h-[300px] md:h-[400px] mySwiper my-10"
       >
         {slideBanner?.map(e => <SwiperSlide key={e.id}>
@@ -30,6 +30,7 @@ function SlideBanner(props: SlideBannerProps) {
             src={e?.images?.[0]}
             alt="Slide 2"
             className="w-full h-full object-cover rounded-lg"
+            property=''
           />
         </SwiperSlide>)}
       </Swiper>
